@@ -45,18 +45,18 @@ else
 #
 
 
-RUBY_ARCH		= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['arch']"}
-RUBY_ARCH_DIR		= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['archdir']"}
+RUBY_ARCH		= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['arch']"}
+RUBY_ARCH_DIR		= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['archdir']"}
 RUBY_CXX_FLAGS		= -DHAVE_STRUCT_TIMESPEC \
 				-DHAVE_STRUCT_TIMEZONE \
 				-DHAVE_CONFIG_H \
 				-DTARGET_UNIX \
 				`${SWIG_LIBRETS_CONFIG} --cflags`
 RUBY_DLL		= ${RUBY_OBJ_DIR}/librets_native.so
-RUBY_HDR_DIR		= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['rubyhdrdir']"}
-RUBY_LIB_DIR		= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['libdir']"}
-RUBY_RUBYLIB_DIR	= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['rubylibprefix']"}
-RUBY_LIB		= ${shell ruby -e "require 'rbconfig'; puts Config::CONFIG['RUBY_SO_NAME']"}
+RUBY_HDR_DIR		= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['rubyhdrdir']"}
+RUBY_LIB_DIR		= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['libdir']"}
+RUBY_RUBYLIB_DIR	= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['rubylibprefix']"}
+RUBY_LIB		= ${shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['RUBY_SO_NAME']"}
 
 ${RUBY_OBJ_DIR}/librets_wrap.o: ${RUBY_OBJ_DIR}/librets_wrap.cpp ${RUBY_MAKEFILE}
 	${CXX} ${RUBY_CXX_FLAGS} 		\

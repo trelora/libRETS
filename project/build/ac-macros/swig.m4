@@ -66,7 +66,7 @@ AC_DEFUN([MY_TEST_SWIG], [
             AC_CHECK_PROG(MCS, mcs, mcs, no)
             AC_CHECK_PROG(GMCS, gmcs, gmcs, no)
             AC_CHECK_PROG(CSC, csc, csc, no)
-            AC_ARG_WITH([snk-file], 
+            AC_ARG_WITH([snk-file],
                 AC_HELP_STRING(
                     [--with-snk-file=PATH],
                     [strong name key file to sign the .NET dll.
@@ -79,7 +79,7 @@ AC_DEFUN([MY_TEST_SWIG], [
                 $ver_major \= 1 \& \
                 $ver_minor \> 3 \| \
                 $ver_minor \= 3 \& \
-                $ver_release \>\= 39 `                         
+                $ver_release \>\= 39 `
 
             if test "$generics" = "1"; then
                 if test "$GMCS" != "no"; then
@@ -124,7 +124,7 @@ EOF
                         rm -f JavaHome.java JavaHome.class
 
                         JAVA_INCLUDES=
-                        AC_ARG_WITH([java-prefix], 
+                        AC_ARG_WITH([java-prefix],
                             AC_HELP_STRING(
                                     [--with-java-prefix=PATH],
                                     [find the Java headers and libraries in `PATH/include` and  `PATH/lib`.
@@ -213,7 +213,7 @@ EOF
             if test "$PYTHON" != "no"; then
                 python_version=`python -c "import sys; print sys.version[[:3]]" | tr -d "\n\r"`
                 python_prefix=`python -c "import sys; print sys.prefix" | tr -d "\n\r"`
-                python_h="$python_prefix/include/python$python_version/Python.h" 
+                python_h="$python_prefix/include/python$python_version/Python.h"
                 case $host_os in
                     *mingw* | *cygwin*) python_h="$python_prefix/include/Python.h" ;;
                 esac
@@ -232,7 +232,7 @@ EOF
         if test "$my_use_ruby" = "yes"; then
             AC_CHECK_PROG(RUBY, ruby, ruby, no)
             if test "$RUBY" != "no"; then
-                ruby_prefix=`ruby -rrbconfig -e 'puts Config::CONFIG[["rubyhdrdir"]] || Config::CONFIG[["archdir"]]' | tr -d "\n\r"`
+                ruby_prefix=`ruby -rrbconfig -e 'puts RbConfig::CONFIG[["rubyhdrdir"]] || RbConfig::CONFIG[["archdir"]]' | tr -d "\n\r"`
                 ruby_h="$ruby_prefix/ruby.h"
                 AC_CHECK_FILE([$ruby_h], [my_ruby_h=$ruby_h])
 
